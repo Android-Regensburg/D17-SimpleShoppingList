@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Simple Shopping List</string>
+    <string name="app_title">Shopping List</string>
+    <string name="app_tag_line">a very simple shopping list</string>
+    <string name="input_quantity_hint">1</string>
+    <string name="input_quantity_default">1</string>
+    <string name="input_item_hint">z.B. Milk</string>
+    <string name="input_button_label">Add</string>
+</resources>

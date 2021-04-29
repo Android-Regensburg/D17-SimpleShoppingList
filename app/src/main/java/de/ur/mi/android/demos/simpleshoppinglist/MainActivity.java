@@ -33,6 +33,10 @@ public class MainActivity extends AppCompatActivity {
 
     private void initUI() {
         setContentView(R.layout.activity_main);
+
+        quantityInputElement = findViewById(R.id.input_quantity);
+        itemInputElement = findViewById(R.id.input_item);
+
         shoppingListAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, shoppingList);
         ListView shoppingListView = findViewById(R.id.list_items);
         shoppingListView.setAdapter(shoppingListAdapter);
@@ -43,8 +47,6 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
-        quantityInputElement = findViewById(R.id.input_quantity);
-        itemInputElement = findViewById(R.id.input_item);
         Button addItemButton = findViewById(R.id.input_add_button);
         addItemButton.setOnClickListener(new View.OnClickListener() {
             @Override

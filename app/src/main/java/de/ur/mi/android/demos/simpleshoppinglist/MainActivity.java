@@ -19,7 +19,7 @@ import java.util.ArrayList;
  * gespeichert. Diese ist über einen Adapter mit einem ListView verbunden. Der  Adapter sorgt
  * automatisch dafür, dass Änderungen an der Datenstruktur auch im User Interface angezeigt werden.
  * Dafür wird in der Activity folgender Ablauf implementiert:
- *
+ * <p>
  * - Beim Start werden die notwendigen UI-Elemente referenziert und die ArrayList und der Adapter erstellt
  * - Auf den UI-Elementen werden die notwendigen Listener für die Eingabe-Events durch anonyme, innere
  * Klassen abgefangen
@@ -28,12 +28,12 @@ import java.util.ArrayList;
  * - Sind diese nicht leer, wird ein neuer Eintrag zusammengesetzt (Menge + Beschreibung) und
  * in der ArrayList gespeichert
  * - Nach Hinzufügen der neuen Inhalte zur ArrayList wird das ListView durch den Adapter (Aufruf der
- *  notifyDataSetChanged-Methode) über die Änderungen informiert. Das View stellt dann automatische
- *  die neuen Inhalte im UI dar.
- *
- *  Zusätzlich wird der Long-Click auf Einträge der ListView abgefangen: Das so ausgewählte Element
- *  wird aus der ArrayList entfernt und der Adapter erneut über die Änderungen an der Datenstruktur
- *  informiert.
+ * notifyDataSetChanged-Methode) über die Änderungen informiert. Das View stellt dann automatische
+ * die neuen Inhalte im UI dar.
+ * <p>
+ * Zusätzlich wird der Long-Click auf Einträge der ListView abgefangen: Das so ausgewählte Element
+ * wird aus der ArrayList entfernt und der Adapter erneut über die Änderungen an der Datenstruktur
+ * informiert.
  */
 public class MainActivity extends AppCompatActivity {
 
@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
     // Adapter für das Verbinden von ArrayList und ListView
     private ArrayAdapter<String> shoppingListAdapter;
 
-    // Refernzen auf die UI-Elemente, auf die auch nach der Initialisierung zugegriffen werden muss
+    // Referenzen auf die UI-Elemente, auf die auch nach der Initialisierung zugegriffen werden muss
     private EditText quantityInputElement;
     private EditText itemInputElement;
 
@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
          * Erstellen des Adapters, der die ArrayList (letzter Parameter) mit dem ListView verknüpfen
          * wird. Der zweite Paramter (layout) gibt an, WIE die Elemente, die der Adapter an
          * angeschlossene Views weiter gibt, in diesen dargestellt werden soll. Hier verwenden wir
-         * ein vom Android-SDK vorgegebenes Layout, dass die Inahlte als einfaches TextView darstellt.
+         * ein vom Android-SDK vorgegebenes Layout, das die Inahlte als einfaches TextView darstellt.
          */
         shoppingListAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, shoppingList);
         ListView shoppingListView = findViewById(R.id.list_items);
@@ -120,17 +120,23 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * Fügt ein neues Element zur Einkaufsliste hinzu und aktualisiert das UI
+     *
      * @param quantity Mengenangabe für das neue Element
-     * @param item Beschreibung für das neue Element
+     * @param item     Beschreibung für das neue Element
      */
     private void addItemToShoppingList(int quantity, String item) {
         String stringForListEntry = quantity + "x " + item;
         shoppingList.add(stringForListEntry);
+        /**
+         * Jetzt teilen wir dem Adapter mit, dass das angeschlossen ListView über Ändeurngen
+         * an der Datenstruktur (ArrayList) informiert werden soll.
+         */
         shoppingListAdapter.notifyDataSetChanged();
     }
 
     /**
      * Entfernt ein Element aus der Einkaufsliste und aktualisiert das UI
+     *
      * @param position Position des zu entfernenden Elements in der ArrayList
      */
     private void removeItemFromShoppingList(int position) {

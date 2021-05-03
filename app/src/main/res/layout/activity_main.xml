@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <!-- Titel der App -->
     <TextView
         android:id="@+id/title"
         android:layout_width="match_parent"
@@ -19,6 +20,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         />
 
+    <!-- Beschreibung der App -->
     <TextView
         android:id="@+id/tag_line"
         android:layout_width="match_parent"
@@ -29,6 +31,8 @@
         android:gravity="center"
         app:layout_constraintTop_toBottomOf="@+id/title" />
 
+    <!-- Elemente für die Dateneingabe in einem separaten Layout -->
+    <!-- Die Größe der Kindelemente wird durch deren relative Ausnutzung des verfügbaren Platzes (weightSum) definiert -->
     <LinearLayout
         android:id="@+id/input_elements"
         android:layout_width="match_parent"
@@ -40,7 +44,9 @@
         app:layout_constraintTop_toBottomOf="@id/tag_line"
         tools:layout_editor_absoluteX="10dp">
 
-
+        <!-- Eingabe der Mengenangabe für den neuen Eintrag -->
+        <!-- Durch das Setzen des Input-Types können hier nur Zahlen eingegeben werden -->
+        <!-- Über einen Platzhalterwert (hint) wird bei leerem Eingabefeld ein Hinweis angezigt, welche Art von Eingaben hier erfolgen sollen -->
         <EditText
             android:id="@+id/input_quantity"
             android:layout_width="0dp"
@@ -52,6 +58,8 @@
             android:importantForAutofill="no"
             android:inputType="number" />
 
+        <!-- Eingabe der Bezeichnung für den neuen Eintrag -->
+        <!-- Über einen Platzhalterwert (hint) wird bei leerem Eingabefeld ein Hinweis angezigt, welche Art von Eingaben hier erfolgen sollen -->
         <EditText
             android:id="@+id/input_item"
             android:layout_width="0dp"
@@ -61,7 +69,7 @@
             android:importantForAutofill="no"
             android:inputType="text" />
 
-
+        <!-- Button zum Hinzufügen eines neuen Eintrags auf Basis der Inhalte der beiden Eingabefelder -->
         <Button
             android:id="@+id/input_add_button"
             android:layout_width="0dp"
@@ -70,7 +78,7 @@
             android:text="@string/input_button_label" />
     </LinearLayout>
 
-
+    <!-- View zur Darstellung der aktuellen Inhalte der Einkaufsliste -->
     <ListView
         android:id="@+id/list_items"
         android:layout_width="match_parent"
